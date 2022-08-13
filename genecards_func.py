@@ -1,3 +1,8 @@
+##You need three python modules are re,requests,BeautifulSoup4.
+##Run the paogram and input your gene name split by space,that you can get the function in order.
+##It write by vision python 3.9.
+
+
 import re
 import requests
 from bs4 import BeautifulSoup
