@@ -5,6 +5,8 @@
 
 import re
 import requests
+import time
+import random
 from bs4 import BeautifulSoup
 kv = {"user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 \
         (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
@@ -13,6 +15,7 @@ genelist = genelist.strip().split()
 for gene in genelist:
     url = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+ gene
     r = requests.get(url, headers=kv)
+    time.sleep(random.randint(1,2))
     demo = r.text
     soup = BeautifulSoup(demo, "html.parser")
     sa = soup.find_all("a", {"data-ga-action": "GWA"})
@@ -33,4 +36,5 @@ for gene in genelist:
     for a in list3:
         b = str(a).replace('"', '').replace("'", "")
         list4.append(b)
+    print(gene)
     print([str(list4).replace("[", "").replace("]", "").replace("'", "")])
